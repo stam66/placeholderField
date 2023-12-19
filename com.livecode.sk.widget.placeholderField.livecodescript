@@ -554,10 +554,8 @@ getProp widgetTraversalOn
 end widgetTraversalOn
 
 setProp widgetTraversalOn pBool
-    set the widgetTraversalOn of me to pBool
-    --    set the traversalOn of me to the widgetTraversalOn of me
-    --    updateVisualControls
-    setTraversalOn
+   set the widgetTraversalOn of me to pBool
+   setTraversalOn
 end widgetTraversalOn
 /////// END PROPERTIES/////////
 
@@ -581,6 +579,7 @@ command createVisualControls
         
         create invisible field "disclose" in me
         put the id of it into sDiscloseID
+        set the opaque of field "disclose" of me to true -- added by @BerndN
         set the text of control id sDiscloseID to numToCodepoint(0x23FF)
         
         reset the templateField
@@ -629,12 +628,10 @@ command updateVisualControls
     showHidePlaceholder
     showHideText
     resizeFields
-    
-    --    set the traversalOn of me to the widgetTraversalOn of me
 end updateVisualControls
 
 command setTraversalOn
-    set the traversalOn of me to the widgetTraversalOn of me
+    set the traversalOn of the owner of me to the widgetTraversalOn of me -- modified by @BerndN
 end setTraversalOn
 
 command resizeFields
@@ -680,7 +677,7 @@ end resizeFields
 ///////////////  ACTIONS  ////////////////
 on moveStopped -- added by @BerndN
     ## only field "placeholder" emits 'moveStopped' when used 'move without waiting'
-    set the visible of the target to (the loc of the target is within the rect of control id sTextID) -- "of me" was missing ;)
+    set the visible of the target to (the loc of the target is within the rect of control id sTextID)
 end moveStopped
 
 command showHidePlaceholder 
@@ -749,18 +746,25 @@ end fieldAction
 
 ///////////////  EVENTS /////////////// 
 on parentPropertyChanged
-    updateVisualControls
+   updateVisualControls
 end parentPropertyChanged
 
 on openControl
     if not sHasCreatedVisuals then createVisualControls
     updateVisualControls
     resizeFields
+    send "setTraversalOn" to me in 50 milliseconds  -- added by @BerndN
 end openControl
 
 on focusIn
     if the focusedObject = the long id of control id sTextID then select after control id sTextID
-end focusIn
+ end focusIn
+ 
+on tabKey -- added by @BerndN
+    lock messages
+    pass tabKey
+    unlock messages
+end tabKey
 
 on mouseDown
     if the short name of the target is "disclose" then
@@ -840,8 +844,8 @@ end exitField
 
 on closeField
     exitField
-end closeField
-
+ end closeField
+ 
 on resizeControl
     resizeFields
 end resizeControl
@@ -876,4 +880,3 @@ end fieldIsEmpty
         set the topMargin of pFieldLongID to 8
     end if 
 end centerTextVertically
-
