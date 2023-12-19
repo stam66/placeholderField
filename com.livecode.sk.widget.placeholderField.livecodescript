@@ -410,7 +410,6 @@ end passwordField
 setProp passwordField pBool
     set the passwordField of me to pBool
     set the obscureText of me to pBool
-    --    if pBool then set the text of field "text" to empty
     updateVisualControls
 end passwordField
 
