@@ -15,7 +15,7 @@ All properties are settable in the widget's Property Inspector. Documentation sh
 * _textContent_: the text the field contains, used when passwordField = true
 * _normalTextColor_: textColor for user-entered text (default = 66,66,66)
 * _normalTextStyle_: textStyle for user-entered text (default = "Plain")
-* _textScaleFactor_: scales text relative to field height - defult = 0.4 (40% of the field's Height)
+* _textScaleFactor_: scales text relative to field height - default = 0.4 (40% of the field's Height)
 * _placeholderTextColor_: placeholder text's textColor (defualt = 170,170,170)
 * _placeholderTextStyle_: placeholder text's textStyle (default = "Italic")
 * _passwordField_: setting this to true obscures text with bullet ponts (default = false)
