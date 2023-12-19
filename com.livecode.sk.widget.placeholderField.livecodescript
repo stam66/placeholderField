@@ -1,4 +1,4 @@
-﻿script "com.livecode.sk.widget.placeholderField"
+﻿script "com.livecode.sk.widget.placeholderField" 
 /**
 Title: placeholderField
 
