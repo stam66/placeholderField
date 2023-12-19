@@ -1,5 +1,5 @@
 # placeholderField widget
-Current version: 1.0  
+Current version: 1.0.0 
 Special thanks to **@BerndN** for adding the polish by fixing issues with _animation_ and _traversalOn_.
 
 **PlaceholderField** is a script widget that provides a text field that includes a placeholder text as user prompty that disappears on entering text and reappears of field is empty.
