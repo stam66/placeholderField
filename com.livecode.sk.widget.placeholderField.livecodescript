@@ -1,5 +1,4 @@
 ﻿script "com.livecode.sk.widget.placeholderField"
-
 /**
 Title: placeholderField
 
@@ -21,7 +20,7 @@ placeholderText: the placeholder/hint text to show (default = "Placeholder text"
 textContent: the text the field contains, used when passwordField = true
 normalTextColor: textColor for user-entered text (default = 66,66,66)
 normalTextStyle: textStyle for user-entered text (default = "Plain")
-textScaleFactor: scales text relative to field height - defult = 0.4 (40% of the field's Height)
+textScaleFactor: scales text relative to field height (default = 0.4, or 40% of the field's Height)
 placeholderTextColor: placeholder text's textColor (defualt = 170,170,170)
 placeholderTextStyle: placeholder text's textStyle (default = "Italic")
 passwordField: setting this to true obscures text with bullet ponts (default = false)
